@@ -170,7 +170,7 @@ SIMPLE_JWT = {
 
 
 ALLOWED_HOSTS= [
-    'mobile-shop-api-8e7c1abc4ef8.herokuapp.com',
+    '*',
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
