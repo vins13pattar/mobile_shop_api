@@ -30,7 +30,6 @@ SECRET_KEY = 'django-insecure--@5478dsxxggn3t=2tw7v6$ruv8@7^vk!k=hd=6b%ubk$45a3t
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '*',
 ]
 
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_filters',
     'corsheaders',
     'account',
     'products',
@@ -90,6 +90,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'mobile_shop_db',        # Your database name
+    #     'USER': 'root',      # Your database user
+    #     'PASSWORD': '',  # Your database password
+    #     'HOST': 'localhost',         # Set to empty string for localhost
+    #     'PORT': '3306',              # Set to empty string for default
+    # }
 }
 
 
@@ -151,6 +159,9 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': (
     #     'rest_framework.permissions.IsAuthenticated',
     # ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
@@ -173,7 +184,7 @@ SIMPLE_JWT = {
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:1234',
-    'https://669e73a9a2311961cdd15024--mobileshop-md.netlify.app/',
+    'https://669e73a9a2311961cdd15024--mobileshop-md.netlify.app',
 ]
 CORS_ALLOW_METHODS = [
     'GET',

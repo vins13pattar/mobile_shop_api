@@ -10,6 +10,15 @@ from .serializers import ProductSerializer, OrderSerializer
 from .pagination import ProductPagination
 import razorpay
 import os
+from django_filters import rest_framework as filters
+
+class ProductFilter(filters.FilterSet):
+    min_price = filters.NumberFilter(field_name="price", lookup_expr='gte')
+    max_price = filters.NumberFilter(field_name="price", lookup_expr='lte')
+
+    class Meta:
+        model = Product
+        fields = ['price', 'vendor']
 
 class ProductsViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
@@ -18,6 +27,7 @@ class ProductsViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     pagination_class = ProductPagination
     parser_classes = (MultiPartParser, FormParser)
+    filterset_class = ProductFilter
 
 class OrdersViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]

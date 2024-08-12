@@ -14,7 +14,8 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     brand = models.CharField(max_length=100, default="")
-    seller = models.CharField(choices=SELLER_CHOICES, max_length=100, default="SELLER 1")
+    # seller = models.CharField(choices=SELLER_CHOICES, max_length=100, default="SELLER 1")
+    vendor = models.CharField(choices=SELLER_CHOICES, max_length=100, default="SELLER 1")
 
     def __str__(self):
         return self.name
